@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCG Metagame Data Analysis</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    
+    <div class="web-scraping-url">
+        <form action="/give" method="POST">
+            <label for="URL">URL:</label>
+            <input type="text" id="URL" name="URL" required>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

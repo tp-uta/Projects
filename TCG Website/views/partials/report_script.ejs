@@ -1,0 +1,55 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const id = <%= id %>;
+        const endpoint = `/report/${id}`;
+        fetch(endpoint).then(response => response.json()).then(data => {
+            const currentSection = document.getElementById("current-section");
+            const newSection = document.getElementById("new-section");
+            const depreciatedSection = document.getElementById("depreciated-section");
+            data.forEach(entry => {
+                const button = document.createElement('button');
+                button.classList.add('button');
+                button.textContent = entry.Name;
+
+                const extraInfoDiv = document.createElement('div');
+                extraInfoDiv.classList.add('extra-info')
+
+                const bubbleContainer = document.createElement('div');
+                bubbleContainer.classList.add('bubble-container');
+                bubbleContainer.textContent = `${entry.Percent_Change.toFixed(3)}%`;
+
+                if (entry.Percent_Change > 0) {
+                    button.classList.add('up-arrow');
+                }
+                else if (entry.Percent_Change < 0) {
+                    button.classList.add('down-arrow');
+                }
+
+                for (const key in entry) {
+                    if (key.startsWith('Old') || key.startsWith('New')) {
+                        const infoPara = document.createElement('p');
+                        infoPara.textContent = `${key}: ${entry[key]}`;
+                        extraInfoDiv.appendChild(infoPara);
+                    }
+                }
+
+                button.addEventListener('click', () => {
+                    extraInfoDiv.classList.toggle('show');
+                });
+                
+                button.appendChild(extraInfoDiv);
+                button.appendChild(bubbleContainer);
+
+                if (entry.Old>0 && entry.New>0) {
+                    currentSection.appendChild(button)
+                }
+                else if (entry.Old === 0) {
+                    newSection.appendChild(button);
+                }
+                else if(entry.New === 0) {
+                    depreciatedSection.appendChild(button);
+                }
+            });
+        });
+    });
+</script>

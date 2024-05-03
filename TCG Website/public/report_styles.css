@@ -1,0 +1,111 @@
+body {
+    font-family: 'Kumbh Sans', sans-serif;
+    background-color: #f0f0f0;
+    padding: 0px;
+}
+
+.section {
+    margin-right: 20px;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.button {
+    background-color: #4c77af;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 12px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    background-position: right top;
+}
+
+.button:hover {
+    background-color: #6b9dd0;
+}
+
+.button.up-arrow::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-image: url('/images/green_up_arrow.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+}
+
+.button.down-arrow::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-image: url('/images/red_down_arrow.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+}
+
+.extra-info {
+    display: none;
+    padding: 10px;
+    background-color: #858585f1;
+    border-radius: 8px;
+    position: relative;
+    top: calc(100% + 5px);
+    left: 0;
+    width: calc(100% - 20px);
+    z-index: 1;
+}
+
+.extra-info p {
+    margin: 5px 0;
+}
+
+.extra-info.show {
+    display: block;
+}
+
+.bubble-container {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 10px); /* Adjust the distance from the button */
+    transform: translate(0, -50%);
+    background: rgba(107, 157, 208, 0.95);
+    border-radius: 6.4px;
+    padding: 10px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    display: none;
+}
+
+.bubble-container:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border: 12px solid transparent;
+    border-right-color: rgba(107, 157, 208, 0.95);
+    border-left: 0;
+    border-bottom: 0;
+    margin-top: -6px; /* Half the height of the arrow */
+    margin-left: -12px;
+}
+
+.button:hover .bubble-container {
+    display: block;
+}

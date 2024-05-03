@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCG Metagame Data Analysis</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+    
+    <div>
+        <h2>OCG Metagame Reports</h2>
+        <ul>
+            <% for (let i = array.length -1; i > 0; i--) { %>
+                    <li>
+                        <a href="/OCGAnalysis/<%= array[i] %>" id="Report<%= array[i] %>">
+                            Metagame Report <%= array[i].slice(0,4)+'.'+array[i].slice(4,6)%>, #<%= Number(array[i].slice(6,8)) %>
+                            <% if(Number(array[i].slice(8,10)) != 0) { %>
+                                ,#<%= Number(array[i].slice(8,10)) %>
+                            <% } %>
+                        </a>
+                    </li>
+                <% } %>
+            <li>
+                <a href="/report/create" id="Create Report">Submit a RotK Link</a>
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>

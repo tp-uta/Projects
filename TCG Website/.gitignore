@@ -1,0 +1,5 @@
+.env
+*.png
+*.sh
+*.txt
+*node_modules

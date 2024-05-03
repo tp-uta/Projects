@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCG Metagame Report | <%= id.slice(0,4)+'.'+id.slice(4,6)%>, #<%= Number(id.slice(6,8)) %>
+        <% if(Number(id.slice(8,10)) != 0) { %>
+            ,#<%= Number(id.slice(8,10)) %>
+        <% } %></title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/report_styles.css">
+</head>
+<body>
+
+    <%- include('./partials/navbar.ejs') %>
+    <header>
+        <h1>
+            <%= id.slice(0,4)+'.'+id.slice(4,6)%>, #<%= Number(id.slice(6,8))-1 %> to
+            <%= id.slice(0,4)+'.'+id.slice(4,6)%>, #<%= Number(id.slice(6,8)) %>
+        </h1>
+    </header>
+
+    <%- include('./partials/report_sections.ejs') %>
+
+    <%- include('./partials/report_script.ejs') %>
+</body>
+</html>
